@@ -72,7 +72,7 @@ public class ContactManager {
         return credential;
     }
 
-    public static SearchResponse findContactByName(String name, PeopleService peopleService) throws IOException, InterruptedException, GeneralSecurityException {
+    public static SearchResponse findContactByName(String name, PeopleService peopleService) throws IOException, InterruptedException {
         // Warmup cache
         SearchResponse response = peopleService.people().searchContacts()
                 .setQuery("")
