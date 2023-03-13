@@ -1,3 +1,3 @@
 
-S
-#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+T
+$src/main/java/assistant/Request.java,a\4\a4edd0c11b4c6123a16149680cf974cd31e8b037
