@@ -16,7 +16,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>assistant.Main</mainClass>
+                            <mainClass>assistant.ApiManager</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
