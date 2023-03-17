@@ -16,7 +16,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>assistant.Main</mainClass>
+                            <mainClass>assistant.ApiManager</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -45,6 +45,19 @@
             <groupId>com.google.apis</groupId>
             <artifactId>google-api-services-calendar</artifactId>
             <version>v3-rev20230217-2.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>edu.stanford.nlp</groupId>
+            <artifactId>stanford-corenlp</artifactId>
+            <version>4.4.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>edu.stanford.nlp</groupId>
+            <artifactId>stanford-corenlp</artifactId>
+            <version>4.4.0</version>
+            <classifier>models-french</classifier>
         </dependency>
 
     </dependencies>
