@@ -58,4 +58,8 @@ public class Contact {
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
     }
+
+    public void getAll(){
+
+    }
 }
