@@ -30,17 +30,19 @@ public class Main {
                 new PeopleService.Builder(HTTP_TRANSPORT, Constants.JSON_FACTORY, contactManager.getCredentials(HTTP_TRANSPORT))
                         .setApplicationName(Constants.APPLICATION_NAME)
                         .build();
-/*
+
         if (contactRequest.findContactByName("naruto", service).getResults() != null) {
             for (SearchResult result : contactRequest.findContactByName("naruto", service).getResults()) {
-                Contact malik  = contactCreation.createContact(result.getPerson());
+                Contact malik = contactCreation.createContact(result.getPerson());
                 System.out.println(malik.getName());
                 System.out.println(malik.getEmailAddress());
                 System.out.println(malik.getAddress());
                 System.out.println(malik.getBirthday());
                 System.out.println(malik.getPhoneNumber());
                 System.out.println(malik.getAge());
-
+            }
+        }
+                /*
 
                 //System.out.println(malik.getAge());
                 //System.out.println(malik.getBirthday());
