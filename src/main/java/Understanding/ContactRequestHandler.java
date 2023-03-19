@@ -2,7 +2,11 @@ package Understanding;
 
 
 import java.util.regex.Matcher;
+
+import ApiRequest.ContactRequest;
+import Instanciation.ContactCreation;
 import Object.Request;
+import Services.Service;
 
 public class ContactRequestHandler extends RequestHandler {
     private static final String REGEX_CONTACT_ADRESS = "\\b(vit|vis|vi|habite|habites|demeure|demeures)\\b";
@@ -10,49 +14,50 @@ public class ContactRequestHandler extends RequestHandler {
     private static final String REGEX_CONTACT_MAIL = "\\b(mail|mel|maile|mails)\\b";
     private static final String REGEX_CONTACT_PHONE = "\\b(numero|numro|telephone|telefone)\\b";
 
+
     @Override
     public String understandingRequestWithName(Request request){
         if(!request.getNomCommuns().isEmpty()) {
-            String nomsCommuns = convertListToString(request.getNomCommuns());
+            String nomsCommuns = service.convertListToString(request.getNomCommuns());
             Matcher matcherMail = searchMatchRegex(nomsCommuns, REGEX_CONTACT_MAIL);
             Matcher matcherAdress = searchMatchRegex(nomsCommuns, REGEX_CONTACT_ADRESS);
             Matcher matcherPhone = searchMatchRegex(nomsCommuns, REGEX_CONTACT_PHONE);
             Matcher matcherBirthday = searchMatchRegex(nomsCommuns, REGEX_CONTACT_BIRTHDAY);
             if (matcherMail.find()) {
-                return "On demande l'adresse mail d'un contact";
+                return "mail contact";
             } else if(matcherAdress.find()){
-                return "L'adresse du contact";
+                return "adresse contact";
             } else if(matcherPhone.find()){
-                return "Le numéro de telephone du contact";
+                return "telephone contact";
             } else if (matcherBirthday.find()) {
-                return "La date d'anniversaire du contact";
+                return "anniversaire contact";
             } else {
-                return "Toutes les infos sur le contact";
+                return "Toutes les infos contact";
             }
         } else if (!request.getVerbes().isEmpty()) {
-            String verbs = convertListToString(request.getVerbes());
+            String verbs = service.convertListToString(request.getVerbes());
             Matcher matcherBirthday = searchMatchRegex(verbs, REGEX_CONTACT_BIRTHDAY);
             Matcher matcherAdresse = searchMatchRegex(verbs, REGEX_CONTACT_ADRESS);
             if(matcherBirthday.find()){
-                return "La date d'anniversaire du contact";
+                return "anniversaire contact";
             } else if (matcherAdresse.find()) {
-                return "L'adresse du contact";
+                return "adresse contact";
             } else{
-                return "Toutes les infos sur le contact";
+                return "Toutes les infos contact";
             }
         } else {
-            return "Je n'ai pas compris veuillez reformuler svp (juste un nom)";
+            return "";
         }
     }
 
     @Override
     public String understandingRequestWithLocation(Request request){
-        String verbs = convertListToString(request.getVerbes());
+        String verbs = service.convertListToString(request.getVerbes());
         Matcher matcher = searchMatchRegex(verbs, REGEX_CONTACT_ADRESS);
         if(matcher.find()){
-            return "demande les contacts d'une localisation";
+            return "contacts localisation";
         } else {
-            return "Surement les contacts d'une localisation";
+            return "contacts localisation";
         }
     }
 

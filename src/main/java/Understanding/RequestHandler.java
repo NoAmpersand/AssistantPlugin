@@ -1,5 +1,6 @@
 package Understanding;
 
+import Services.Service;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.CoreDocument;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
@@ -17,6 +18,8 @@ public abstract class RequestHandler {
     protected abstract String understandingRequestWithNoun(Request request);
     protected abstract String understandingRequestWithLocation(Request request);
 
+    protected Service service = new Service();
+
     public String normalizeRequest(String input){
         return Normalizer.normalize(input, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase();
     }
@@ -25,10 +28,6 @@ public abstract class RequestHandler {
         requestType = normalizeRequest(requestType);
         Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
         return pattern.matcher(requestType);
-    }
-
-    public String convertListToString(List<String> list){
-        return String.join(" ", list);
     }
 
     public void requestParser(Request request, String text, StanfordCoreNLP stanfordCoreNLP){
@@ -64,7 +63,7 @@ public abstract class RequestHandler {
         else if(!request.getVilles().isEmpty()){
             return understandingRequestWithLocation(request);
         }
-        return "Je n'ai pas compris veuillez reformuler svp";
+        return"ezrertyu";
     }
 
 }
