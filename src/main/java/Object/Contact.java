@@ -3,38 +3,28 @@ package Object;
 import com.google.api.services.people.v1.model.Date;
 
 public class Contact {
-    private String lastName;
-    private String firstName;
-    private Date birthday;
+    private String Name;
+    private String birthday;
     private String phoneNumber;
-    private String age;
-    private String city;
-    private String country;
-    private String postalCode;
+    private int age;
+    private String Address;
     private String emailAddress;
 
-    public String getLastName() {
-        return lastName;
+
+
+    public String getName() {
+        return Name;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
@@ -46,38 +36,21 @@ public class Contact {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
-    public String getCity() {
-        return city;
-    }
+   public String getAddress(){
+        return Address;
+   }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
+   public void setAddress(String Address){
+        this.Address =Address;
+   }
     public String getEmailAddress() {
         return emailAddress;
     }

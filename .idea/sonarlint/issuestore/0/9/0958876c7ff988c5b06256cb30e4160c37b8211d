@@ -1,0 +1,7 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ªšœç
+`
+java:S1610"EConvert the abstract class "UnderstandingResquest" into an interface.(ºÈþ‚üÿÿÿÿ
+]
+java:S2094"BRemove this empty class, write its code or make it an "interface".(ºÈþ‚üÿÿÿÿ
+V	java:S125"<This block of commented-out lines of code should be removed.(Ñ¡èúÿÿÿÿÿ
