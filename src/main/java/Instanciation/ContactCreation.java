@@ -1,6 +1,5 @@
 package Instanciation;
 import Interface.ContactCreationInterface;
-import Interface.ContactServiceInterface;
 import Object.Contact;
 import Services.ContactService;
 import com.google.api.services.people.v1.model.Person;

@@ -63,7 +63,7 @@ public abstract class RequestHandler {
         else if(!request.getVilles().isEmpty()){
             return understandingRequestWithLocation(request);
         }
-        return"ezrertyu";
+        return "";
     }
 
 }

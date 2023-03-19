@@ -1,10 +1,8 @@
 package Services;
 
-import Interface.ContactServiceInterface;
-
 import java.time.LocalDate;
 
-public class ContactService extends Service implements ContactServiceInterface  {
+public class ContactService extends Service  {
     public int calculateAge(String birthday){
         int age = 0;
         String[] split = birthday.split("/");

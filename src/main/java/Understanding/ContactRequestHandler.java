@@ -63,6 +63,6 @@ public class ContactRequestHandler extends RequestHandler {
 
     @Override
     public String understandingRequestWithNoun(Request request){
-        return "Demande quelque chose dans le plugin contact";
+        return "";
     }
 }
