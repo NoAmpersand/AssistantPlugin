@@ -9,27 +9,29 @@ public class Request {
     private List<String> nomPropres = new ArrayList<>();
     private List<String> nomCommuns = new ArrayList<>();
     private List<String> verbes = new ArrayList<>();
+    private int nombres;
 
-    public String request;
-
-    public String getRequest() {
-        return request;
+    public int getNombres() {
+        return nombres;
     }
 
-    public void setRequest(String request) {
-        this.request = request;
+    public void setNombres(int nombres) {
+        this.nombres = nombres;
     }
 
-    public void addToVilles(String text){
+    public void addToVilles(String text) {
         this.villes.add(text);
     }
-    public void addToVerbes(String text){
+
+    public void addToVerbes(String text) {
         this.verbes.add(text);
     }
-    public void addToNomCommuns(String text){
+
+    public void addToNomCommuns(String text) {
         this.nomCommuns.add(text);
     }
-    public void addToNomPropres(String text){
+
+    public void addToNomPropres(String text) {
         this.nomPropres.add(text);
     }
 

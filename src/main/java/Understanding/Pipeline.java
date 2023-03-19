@@ -11,7 +11,7 @@ public class Pipeline {
         pipelineApplication = new StanfordCoreNLP("french");
     }
 
-    public static StanfordCoreNLP getPipelineApplication(){
+    public static StanfordCoreNLP getPipelineApplication() {
         return pipelineApplication;
     }
 }

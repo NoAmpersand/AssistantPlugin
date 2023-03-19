@@ -1,11 +1,9 @@
 package Services;
 
-import Interface.ContactServiceInterface;
-
 import java.time.LocalDate;
 
-public class ContactService extends Service implements ContactServiceInterface  {
-    public int calculateAge(String birthday){
+public class ContactService extends Service {
+    public int calculateAge(String birthday) {
         int age = 0;
         String[] split = birthday.split("/");
         int day = Integer.parseInt(split[0]);
@@ -17,19 +15,16 @@ public class ContactService extends Service implements ContactServiceInterface  
         int currentYear = currentDate.getYear();
         int currentDay = currentDate.getDayOfMonth();
 
-        if(currentMonth<month) {
-            age = currentYear-year-1;
-        }
-        else if(month==currentMonth){
-            if(currentDay<day){
-                age = currentYear-year-1;
+        if (currentMonth < month) {
+            age = currentYear - year - 1;
+        } else if (month == currentMonth) {
+            if (currentDay < day) {
+                age = currentYear - year - 1;
+            } else {
+                age = currentYear - year;
             }
-            else{
-                age = currentYear-year;
-            }
-        }
-        else{
-            age = currentYear-year;
+        } else {
+            age = currentYear - year;
         }
 
         return age;

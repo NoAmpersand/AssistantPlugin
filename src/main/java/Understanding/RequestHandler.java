@@ -15,22 +15,24 @@ import Object.Request;
 public abstract class RequestHandler {
 
     protected abstract String understandingRequestWithName(Request request);
+
     protected abstract String understandingRequestWithNoun(Request request);
+
     protected abstract String understandingRequestWithLocation(Request request);
 
     protected Service service = new Service();
 
-    public String normalizeRequest(String input){
+    public String normalizeRequest(String input) {
         return Normalizer.normalize(input, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase();
     }
 
-    public Matcher searchMatchRegex(String requestType, String regex){
+    public Matcher searchMatchRegex(String requestType, String regex) {
         requestType = normalizeRequest(requestType);
         Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
         return pattern.matcher(requestType);
     }
 
-    public void requestParser(Request request, String text, StanfordCoreNLP stanfordCoreNLP){
+    public void requestParser(Request request, String text, StanfordCoreNLP stanfordCoreNLP) {
         CoreDocument coreDocument = new CoreDocument(text);
 
         stanfordCoreNLP.annotate(coreDocument);
@@ -38,32 +40,29 @@ public abstract class RequestHandler {
         List<CoreLabel> coreLabelList = coreDocument.tokens();
 
         for (CoreLabel word : coreLabelList) {
-            if(word.tag().equals("VERB") || word.tag().equals("AUX") ){
+            if (word.tag().equals("VERB") || word.tag().equals("AUX")) {
                 request.addToVerbes(word.originalText());
-            }
-            else if(word.ner().equals("I-LOC")){
+            } else if (word.ner().equals("I-LOC")) {
                 request.addToVilles(word.originalText());
-            }
-            else if(word.ner().equals("I-PER") ){
+            } else if (word.ner().equals("I-PER")) {
                 request.addToNomPropres(word.originalText());
-            }
-            else if(word.tag().equals("NOUN") ){
+            } else if (word.tag().equals("NOUN")) {
                 request.addToNomCommuns(word.originalText());
+            } else if (word.tag().equals("NUM")) {
+                request.setNombres(Integer.parseInt(word.originalText()));
             }
         }
     }
 
-    public String understandingRequest(Request request){
-        if(!request.getNomPropres().isEmpty()) {
+    public String understandingRequest(Request request) {
+        if (!request.getNomPropres().isEmpty()) {
             return understandingRequestWithName(request);
-        }
-        else if(!request.getNomCommuns().isEmpty()){
+        } else if (!request.getNomCommuns().isEmpty()) {
             return understandingRequestWithNoun(request);
-        }
-        else if(!request.getVilles().isEmpty()){
+        } else if (!request.getVilles().isEmpty()) {
             return understandingRequestWithLocation(request);
         }
-        return"ezrertyu";
+        return "";
     }
 
 }

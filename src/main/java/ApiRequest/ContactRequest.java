@@ -46,8 +46,8 @@ public class ContactRequest implements ContactRequestInterface {
         List<Person> persons = findAll(peopleService);
         List<Contact> contacts = new ArrayList<>();
         ContactCreation contactCreation = new ContactCreation();
-        for(Person person :persons){
-            if(person.getAddresses()!=null) {
+        for (Person person : persons) {
+            if (person.getAddresses() != null) {
                 if (person.getAddresses().get(0).getCity().equals(city)) {
                     contacts.add(contactCreation.createContact(person));
                 }
@@ -62,8 +62,8 @@ public class ContactRequest implements ContactRequestInterface {
         List<Person> persons = findAll(peopleService);
         List<Contact> contacts = new ArrayList<>();
         ContactCreation contactCreation = new ContactCreation();
-        for(Person person :persons){
-            if(person.getBirthdays()!=null) {
+        for (Person person : persons) {
+            if (person.getBirthdays() != null) {
                 Contact contact = contactCreation.createContact(person);
                 if (contact.getAge() >= age) {
                     //System.out.println(person.getNames().get(0).getDisplayName());
