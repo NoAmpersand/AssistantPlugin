@@ -1,6 +1,7 @@
 package assistant;
 
 import ApiManager.ContactManager;
+import Exceptions.InvalidQueryException;
 import Response.ContactResponse;
 import Settings.Constants;
 import Understanding.*;
@@ -19,7 +20,7 @@ import Object.Request;
 
 
 public class Main {
-    public static void main(String[] args) throws IOException, GeneralSecurityException, InterruptedException {
+    public static void main(String[] args) throws IOException, GeneralSecurityException, InterruptedException, InvalidQueryException {
         ContactManager contactManager = new ContactManager();
         ContactResponse response = new ContactResponse();
         AssistantInput assistant = new AssistantInput();
