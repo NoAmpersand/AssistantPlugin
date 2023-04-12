@@ -50,8 +50,9 @@ public abstract class RequestHandler {
                 request.addToNomCommuns(word.originalText());
             } else if (word.tag().equals("NUM")) {
                 request.setNombres(Integer.parseInt(word.originalText()));
-            }
-        }
+            } else if (word.tag().equals("ADJ")) {
+                request.addToAdjectifs(word.originalText());
+            }         }
     }
 
     public String understandingRequest(Request request) {

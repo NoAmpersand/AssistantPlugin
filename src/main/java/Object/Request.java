@@ -9,6 +9,7 @@ public class Request {
     private List<String> nomPropres = new ArrayList<>();
     private List<String> nomCommuns = new ArrayList<>();
     private List<String> verbes = new ArrayList<>();
+    private List<String> adjectifs = new ArrayList<>();
     private int nombres;
 
     public int getNombres() {
@@ -34,6 +35,9 @@ public class Request {
     public void addToNomPropres(String text) {
         this.nomPropres.add(text);
     }
+    public void addToAdjectifs(String text) {
+        this.adjectifs.add(text);
+    }
 
     public List<String> getVilles() {
         return villes;
@@ -50,4 +54,9 @@ public class Request {
     public List<String> getVerbes() {
         return verbes;
     }
+
+    public List<String> getAdjectifs() {
+        return adjectifs;
+    }
+
 }

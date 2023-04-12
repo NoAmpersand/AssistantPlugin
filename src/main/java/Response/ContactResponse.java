@@ -63,6 +63,7 @@ public class ContactResponse {
                     for (SearchResult result : contactRequest.findContactByName(nom, people).getResults()) {
                         Contact contact = contactCreation.createContact(result.getPerson());
                         System.out.println(contact.getBirthday());
+                        System.out.println(contact.getAge());
                     }
                 } else {
                     System.out.println("Aucun résultat");
