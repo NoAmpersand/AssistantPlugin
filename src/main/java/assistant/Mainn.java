@@ -48,7 +48,7 @@ public class Mainn {
          * If modifying these scopes, delete your previously saved tokens/ folder.
          */
         private static final List<String> SCOPES =
-                Collections.singletonList(CalendarScopes.CALENDAR_READONLY);
+                Collections.singletonList(CalendarScopes.CALENDAR);
         private static final String CREDENTIALS_FILE_PATH = "/client.json";
 
         /**
@@ -121,10 +121,10 @@ public class Mainn {
             CalendarService calendarService = new CalendarService();
             CalendarRequest calendarRequest = new CalendarRequest();
             //List<Event> daily = calendarRequest.getWeeklyEvents(calendarService, calendarRequest.getUpcommingEvents(service));
-            //System.out.println(calendarRequest.doIHaveAppointmentToday(calendarRequest.getDailyEvents(calendarService,calendarRequest.getUpcommingEvents(service))));
+            System.out.println(calendarRequest.doIHaveAppointmentToday(calendarRequest.getDailyEvents(calendarService,calendarRequest.getUpcommingEvents(service))));
             //System.out.println(calendarRequest.whatTimeIsIt());
 
-            calendarRequest.createEvent("Michel Durant","lundi",18,"Paris",calendarService,service);
+            //calendarRequest.createEvent("Michel Durant","lundi",18,"Paris",calendarService,service);
         }
 
 

@@ -8,5 +8,5 @@ import java.util.List;
 
 public class ConstantsCalendar extends Constants {
     public static final List<String> SCOPES =
-            Arrays.asList(CalendarScopes.CALENDAR_READONLY,CalendarScopes.CALENDAR);
+            Arrays.asList(CalendarScopes.CALENDAR);
 }

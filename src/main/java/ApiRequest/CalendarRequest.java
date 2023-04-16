@@ -4,14 +4,14 @@ import Interface.CalendarRequestInterface;
 import Services.CalendarService;
 import com.google.api.client.util.DateTime;
 import com.google.api.services.calendar.Calendar;
-import com.google.api.services.calendar.model.Event;
-import com.google.api.services.calendar.model.EventDateTime;
-import com.google.api.services.calendar.model.Events;
+import com.google.api.services.calendar.CalendarScopes;
+import com.google.api.services.calendar.model.*;
 
 
 import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CalendarRequest implements CalendarRequestInterface {
@@ -108,6 +108,7 @@ public class CalendarRequest implements CalendarRequestInterface {
 
     @Override
     public void createEvent (String name, String day, int hour, String location, CalendarService calendarService, Calendar service) throws IOException {
+        /*
         Event event = new Event();
         event.setSummary("Rendez-vous avec "+name);
         EventDateTime date = new EventDateTime();
@@ -115,7 +116,47 @@ public class CalendarRequest implements CalendarRequestInterface {
         event.setStart(date);
         event.setLocation(location);
 
-        service.events().insert("primary", event).execute();
+        service.events().insert("primary",event).execute();
+
+        Event event = new Event()
+                .setSummary("Rendez-vous avec "+name)
+                .setLocation(location)
+                .setDescription("rdv important");
+
+
+        EventDateTime start = new EventDateTime()
+                .setDateTime(calendarService.getDate(day,hour,0,0))
+                .setTimeZone("Europe/Paris");
+        event.setStart(start);
+
+        EventDateTime end = new EventDateTime()
+                .setDateTime(calendarService.getDate(day,hour+1,0,0))
+                .setTimeZone("Europe/Paris");
+        event.setEnd(end);
+
+        String[] recurrence = new String[] {"RRULE:FREQ=DAILY;COUNT=2"};
+        event.setRecurrence(Arrays.asList(recurrence));
+
+        EventAttendee[] attendees = new EventAttendee[] {
+                new EventAttendee().setEmail("lpage@example.com"),
+                new EventAttendee().setEmail("sbrin@example.com"),
+        };
+        event.setAttendees(Arrays.asList(attendees));
+
+        EventReminder[] reminderOverrides = new EventReminder[] {
+                new EventReminder().setMethod("email").setMinutes(24 * 60),
+                new EventReminder().setMethod("popup").setMinutes(10),
+        };
+        Event.Reminders reminders = new Event.Reminders()
+                .setUseDefault(false)
+                .setOverrides(Arrays.asList(reminderOverrides));
+        event.setReminders(reminders);
+
+        String calendarId = "primary";
+        event = service.events().insert(calendarId, event).execute();
+        System.out.printf("Event created: %s\n", event.getHtmlLink());
+        */
+
     }
 
 
