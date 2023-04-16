@@ -1,19 +1,27 @@
 package Interface;
 
-import java.io.IOException;
 import Object.EventModel;
 import com.google.api.services.calendar.model.Event;
 
+import java.io.IOException;
+
 public interface EventCreationInterface {
-    public Event createEvent(EventModel modelEvent) throws IOException;
 
-    public void addSummary(EventModel eventModel, Event event);
 
-    public void addDescription(EventModel eventModel, Event event);
+    EventModel createEvent(Event event) throws IOException;
 
-    public void addLocation(EventModel eventModel, Event event);
-    
-    public void addStartDateTime(EventModel modelEvent, Event event);
 
-    public void addEndDateTime(EventModel modelEvent, Event event);
+    void addSummary(EventModel eventModel, Event event);
+
+    void addDescription(EventModel eventModel, Event event);
+
+
+    void addLocation(EventModel eventModel, Event event);
+
+
+    void addStartDateTime(EventModel eventModel, Event event);
+
+
+    void addEndDateTime(EventModel eventModel, Event event);
+
 }
