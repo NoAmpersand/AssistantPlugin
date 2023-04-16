@@ -86,7 +86,9 @@ public class CalendarRequest implements CalendarRequestInterface {
         }
         return null;
     }
-
+/*
+Prend en compte uniquement les evenement avec le terme Rendez vous en titre
+ */
     @Override
     public boolean doIHaveAppointmentToday(List<Event> dailyItems){
         String rdv1 = "Rendez-vous";
@@ -110,10 +112,7 @@ public class CalendarRequest implements CalendarRequestInterface {
 
     @Override
     public void createEvent(String name, String day, int hour, String location, CalendarService calendarService, Calendar service) throws IOException, ParseException {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String dateTimeStr = day + " " + hour + ":00:00";
-        Date dateTime = dateFormat.parse(dateTimeStr);
-
+       /*
 
         Event event = new Event();
         event.setSummary(name);
@@ -122,17 +121,18 @@ public class CalendarRequest implements CalendarRequestInterface {
 
 
         Date startDate = new Date();
-        DateTime startDateTime = new DateTime(startDate);
-        EventDateTime start = new EventDateTime().setDateTime(startDateTime);
+        EventDateTime start = new EventDateTime().setDateTime(calendarService.getDate(day,hour,0,0));
         event.setStart(start);
 
         Date endDate = java.util.Calendar.getInstance().getTime();
         endDate.setTime(startDate.getTime() + 3600000);
-        DateTime endDateTime = new DateTime(endDate);
-        EventDateTime end = new EventDateTime().setDateTime(endDateTime);
+        EventDateTime end = new EventDateTime().setDateTime(calendarService.getDate(day,hour+1,0,0));
         event.setEnd(end);
 
         service.events().insert(String.valueOf(service.calendarList().get("primary")), event).execute();
+        System.out.println("Le RDV a bien été crée");
+
+        */
     }
 
 
