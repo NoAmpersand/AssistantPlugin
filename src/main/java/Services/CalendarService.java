@@ -1,9 +1,11 @@
 package Services;
 
 import com.google.api.client.util.DateTime;
+import org.joda.time.DateTimeZone;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 public class CalendarService extends Service {
     public boolean firstDateIsAfterSecondDate(String date1, String date2) {
@@ -170,6 +172,5 @@ public class CalendarService extends Service {
             calendar.add(Calendar.SECOND, 1);
         }
     }
-
 
 }
