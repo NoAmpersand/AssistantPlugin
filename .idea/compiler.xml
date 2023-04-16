@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Callback" />
         <module name="APItest" />
+        <module name="AssistantPlugin" />
       </profile>
     </annotationProcessing>
   </component>

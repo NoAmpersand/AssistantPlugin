@@ -1,8 +1,6 @@
 package Response;
 
 import ApiRequest.ContactRequest;
-import Exceptions.InvalidQueryException;
-import Exceptions.NoResultException;
 import Instanciation.ContactCreation;
 
 import com.google.api.services.people.v1.PeopleService;
@@ -24,84 +22,85 @@ public class ContactResponse {
     }
 
 
-    public void getResponse(String question, Request request, PeopleService people) throws IOException, InterruptedException, InvalidQueryException {
+    public void getResponse(String question, Request request, PeopleService people) throws IOException, InterruptedException {
         String nom = service.convertListToString(request.getNomPropres());
         String localisation = service.convertListToString(request.getVilles());
         int age = request.getNombres();
-        try {
-            switch (question) {
-                case "mail contact" -> {
-                    if (contactRequest.findContactByName(nom, people).getResults() != null) {
-                        for (SearchResult result : contactRequest.findContactByName(nom, people).getResults()) {
-                            Contact contact = contactCreation.createContact(result.getPerson());
-                            System.out.println(contact.getEmailAddress());
-                        }
-                    } else {
-                        throw new NoResultException("Aucun résultat trouvé");
+        switch (question) {
+            case "mail contact":
+                if (contactRequest.findContactByName(nom, people).getResults() != null) {
+                    for (SearchResult result : contactRequest.findContactByName(nom, people).getResults()) {
+                        Contact contact = contactCreation.createContact(result.getPerson());
+                        System.out.println(contact.getEmailAddress());
                     }
+                } else {
+                    System.out.println("Aucun résultat");
                 }
-                case "adresse contact" -> {
-                    if (contactRequest.findContactByName(nom, people).getResults() != null) {
-                        for (SearchResult result : contactRequest.findContactByName(nom, people).getResults()) {
-                            Contact contact = contactCreation.createContact(result.getPerson());
-                            System.out.println(contact.getAddress());
-                        }
-                    } else {
-                        throw new NoResultException("Aucun résultat trouvé");
+                break;
+
+            case "adresse contact":
+                if (contactRequest.findContactByName(nom, people).getResults() != null) {
+                    for (SearchResult result : contactRequest.findContactByName(nom, people).getResults()) {
+                        Contact contact = contactCreation.createContact(result.getPerson());
+                        System.out.println(contact.getAddress());
                     }
+                } else {
+                    System.out.println("Aucun résultat");
                 }
-                case "telephone contact" -> {
-                    if (contactRequest.findContactByName(nom, people).getResults() != null) {
-                        for (SearchResult result : contactRequest.findContactByName(nom, people).getResults()) {
-                            Contact contact = contactCreation.createContact(result.getPerson());
-                            System.out.println(contact.getPhoneNumber());
-                        }
-                    } else {
-                        throw new NoResultException("Aucun résultat trouvé");
+                break;
+            case "telephone contact":
+                if (contactRequest.findContactByName(nom, people).getResults() != null) {
+                    for (SearchResult result : contactRequest.findContactByName(nom, people).getResults()) {
+                        Contact contact = contactCreation.createContact(result.getPerson());
+                        System.out.println(contact.getPhoneNumber());
                     }
+                } else {
+                    System.out.println("Aucun résultat");
                 }
-                case "anniversaire contact" -> {
-                    if (contactRequest.findContactByName(nom, people).getResults() != null) {
-                        for (SearchResult result : contactRequest.findContactByName(nom, people).getResults()) {
-                            Contact contact = contactCreation.createContact(result.getPerson());
-                            System.out.println(contact.getBirthday());
-                        }
-                    } else {
-                        throw new NoResultException("Aucun résultat trouvé");
+                break;
+            case "anniversaire contact":
+                if (contactRequest.findContactByName(nom, people).getResults() != null) {
+                    for (SearchResult result : contactRequest.findContactByName(nom, people).getResults()) {
+                        Contact contact = contactCreation.createContact(result.getPerson());
+                        System.out.println(contact.getBirthday());
+                        System.out.println(contact.getAge());
                     }
+                } else {
+                    System.out.println("Aucun résultat");
                 }
-                case "Toutes les infos contact" -> {
-                    if (contactRequest.findContactByName(nom, people).getResults() != null) {
-                        for (SearchResult result : contactRequest.findContactByName(nom, people).getResults()) {
-                            Contact contact = contactCreation.createContact(result.getPerson());
-                            contact.printAllInfo();
-                        }
-                    } else {
-                        throw new NoResultException("Aucun résultat trouvé");
+                break;
+            case "Toutes les infos contact":
+                if (contactRequest.findContactByName(nom, people).getResults() != null) {
+                    for (SearchResult result : contactRequest.findContactByName(nom, people).getResults()) {
+                        Contact contact = contactCreation.createContact(result.getPerson());
+                        contact.printAllInfo();
                     }
+                } else {
+                    System.out.println("Aucun résultat");
                 }
-                case "contacts localisation" -> {
-                    if (!contactRequest.findInhabitants(localisation, people).isEmpty()) {
-                        for (Contact contact : contactRequest.findInhabitants(localisation, people)) {
-                            System.out.println(contact.getName());
-                        }
-                    } else {
-                        throw new NoResultException("Aucun résultat trouvé");
+                break;
+            case "contacts localisation":
+                if (!contactRequest.findInhabitants(localisation, people).isEmpty()) {
+                    for (Contact contact : contactRequest.findInhabitants(localisation, people)) {
+                        System.out.println(contact.getName());
                     }
+                } else {
+                    System.out.println("Aucun résultat");
                 }
-                case "tranche d'age plus" -> {
-                    if (!contactRequest.findAgeRange(people, age).isEmpty()) {
-                        for (Contact contact : contactRequest.findAgeRange(people, age)) {
-                            System.out.println(contact.getName());
-                        }
-                    } else {
-                        throw new NoResultException("Aucun résultat trouvé");
+                break;
+            case "tranche d'age plus":
+                if (!contactRequest.findAgeRange(people, age).isEmpty()) {
+                    for (Contact contact : contactRequest.findAgeRange(people, age)) {
+                        System.out.println(contact.getName());
                     }
+                } else {
+                    System.out.println("Aucun résultat");
                 }
-                case "" -> throw new InvalidQueryException("Désolé, je n'ai pas compris votre requête");
-            }
-        } catch(InvalidQueryException | NoResultException e){
-            System.out.println(e.getMessage());
+                break;
+
+            case "":
+                System.out.println("Désolé je n'ai pas compris");
+
         }
     }
 }
