@@ -2,6 +2,8 @@ package assistant;
 
 import ApiManager.CalendarManager;
 import ApiManager.ContactManager;
+import Exceptions.InvalidQueryException;
+import Exceptions.NoResultException;
 import Response.CalendarResponse;
 import Response.ContactResponse;
 import Settings.Constants;
@@ -23,7 +25,7 @@ import Object.Request;
 
 
 public class Main {
-    public static void main(String[] args) throws IOException, GeneralSecurityException, InterruptedException, ParseException {
+    public static void main(String[] args) throws IOException, GeneralSecurityException, InterruptedException, ParseException, NoResultException, InvalidQueryException {
         ContactManager contactManager = new ContactManager();
         CalendarManager calendarManager = new CalendarManager();
         ContactResponse contactResponse = new ContactResponse();
