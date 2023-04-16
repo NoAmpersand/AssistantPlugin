@@ -3,5 +3,11 @@ Q
 !src/main/java/View/Assistant.java,3\b\3b6c4e89ec96266707643dfc3fbbacdce162c9af
 V
 &src/main/java/View/AssistantInput.java,d\4\d4ffbd70f7215d585aad708b47bff3059604d52a
-\
-,src/main/java/ApiRequest/ContactRequest.java,f\8\f8fde5a7fc9afbce77e8448e95eec7adc76bed5d
+]
+-src/main/java/Understanding/PluginFinder.java,9\a\9a06263a59168677f561a22243b6f2918f3c6e99
+_
+/src/main/java/Understanding/RequestHandler.java,5\d\5d152401ac1c8c091f19556ae911144b0d20c0cc
+f
+6src/main/java/Understanding/ContactRequestHandler.java,7\9\79fe81aa30470e33eabc2a8ef6c91f5ce03e3822
+e
+5src/main/java/Interface/ContactCreationInterface.java,e\1\e144d343f86f3808a8774628594308207a8892b2
